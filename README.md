@@ -67,3 +67,9 @@ We chose to use Arduino Uno in order to create a final product that is simple to
  CHAN C -----+ 1K Ω +--+
              +------+
 ```
+
+# What does it look like ?
+### 0.2
+Mixer | YM2149F + oscillator on breadboard | Arduino
+--- | --- | ---
+| ![](doc/media/mixer_0_2.png) | ![](doc/media/YM2149F_0_2.png) | ![](doc/media/arduino_0_2.png) |
