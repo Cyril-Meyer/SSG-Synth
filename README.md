@@ -13,7 +13,7 @@ If you are interested about more use of the YM2149 (SSG) chip, like streaming, r
 ### Roadmap
 * 0.0 :heavy_check_mark: Create Arduino and GitHub project :smile:
 * 0.1 :heavy_check_mark: [hardware] setup and document project (YM2149F breadboard setup, midi interface)
-* 0.2 :x: [code] control SSG chip using an Arduino Uno
+* 0.2 :heavy_check_mark: [code] control SSG chip using an Arduino Uno
 * 0.3 :x: [code] receive midi signals with Arduino
 * 0.4 :x: [code] control SSG chip using midi signals
 * 0.5 :x: [hardware] from breadboard to custom shield
