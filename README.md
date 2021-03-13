@@ -1,7 +1,14 @@
 # SSG-Synth
-YM2149F SSG audio synthesizer with midi interface, Arduino based.
+YM2149F SSG audio synthesizer with midi interface.
+The project is designed for Arduino Uno or Nano, compatibility with other hardware is not assured (but should not be a problem).
 
-We chose to use Arduino Uno in order to create a final product that is simple to setup and robust, thanks to the ability to easily stack shields.
+This project uses a lot of resource from one of my old abandoned projects [Yt-trium/Arduino-YM-Sound-Chips](https://github.com/Yt-trium/Arduino-YM-Sound-Chips)
+
+If you are interested about more use of the YM2149 (SSG) chip, like streaming, reading SNDH files, I recommend the work of [![FlorentFlament](https://avatars2.githubusercontent.com/u/6681007?s=20&v=4) FlorentFlament](https://github.com/FlorentFlament) :
+* [FlorentFlament/ym2149-test](https://github.com/FlorentFlament/ym2149-test)
+* [FlorentFlament/ym2149-streamer](https://github.com/FlorentFlament/ym2149-streamer)
+* [FlorentFlament/ym2149-sndh](https://github.com/FlorentFlament/ym2149-sndh)
+
 
 ### Roadmap
 * 0.0 :heavy_check_mark: Create Arduino and GitHub project :smile:
@@ -11,6 +18,11 @@ We chose to use Arduino Uno in order to create a final product that is simple to
 * 0.4 :x: [code] control SSG chip using midi signals
 * 0.5 :x: [hardware] from breadboard to custom shield
 * 0.6 :x: [doc] examples and tutorial
+
+
+### Tutorial: Create your own
+*TODO* :smile:
+
 
 # Schematics
 ### YM2149F setup
@@ -67,6 +79,10 @@ We chose to use Arduino Uno in order to create a final product that is simple to
  CHAN C -----+ 1K Ω +--+
              +------+
 ```
+
+### YM2149F pinout
+![](doc/media/pin_layout.png)
+
 
 # What does it look like ?
 ### 0.2
