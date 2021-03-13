@@ -9,12 +9,14 @@ If you are interested about more use of the YM2149 (SSG) chip, like streaming, r
 * [FlorentFlament/ym2149-streamer](https://github.com/FlorentFlament/ym2149-streamer)
 * [FlorentFlament/ym2149-sndh](https://github.com/FlorentFlament/ym2149-sndh)
 
+This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects/arduino_midi_library) from [![FortySevenEffects](https://avatars2.githubusercontent.com/u/1766006?s=20&v=4) FortySevenEffects](https://github.com/FortySevenEffects)
+
 
 ### Roadmap
 * 0.0 :heavy_check_mark: Create Arduino and GitHub project :smile:
 * 0.1 :heavy_check_mark: [hardware] setup and document project (YM2149F breadboard setup, midi interface)
 * 0.2 :heavy_check_mark: [code] control SSG chip using an Arduino Uno
-* 0.3 :x: [code] receive midi signals with Arduino
+* 0.3 :heavy_check_mark: [code] receive midi signals with Arduino
 * 0.4 :x: [code] control SSG chip using midi signals
 * 0.5 :x: [hardware] from breadboard to custom shield
 * 0.6 :x: [doc] examples and tutorial
