@@ -12,7 +12,7 @@ If you are interested about more use of the YM2149 (SSG) chip, like streaming, r
 
 ### Roadmap
 * 0.0 :heavy_check_mark: Create Arduino and GitHub project :smile:
-* 0.1 :x: [hardware] setup and document project (YM2149F breadboard setup, midi interface)
+* 0.1 :heavy_check_mark: [hardware] setup and document project (YM2149F breadboard setup, midi interface)
 * 0.2 :x: [code] control SSG chip using an Arduino Uno
 * 0.3 :x: [code] receive midi signals with Arduino
 * 0.4 :x: [code] control SSG chip using midi signals
@@ -108,6 +108,7 @@ Mixer | YM2149F + oscillator on breadboard | Arduino
 | ![](doc/media/mixer_0_2.png) | ![](doc/media/YM2149F_0_2.png) | ![](doc/media/arduino_0_2.png) |
 
 ### 0.3 setup : Arduino + MIDI interface = blink led
-Interface | Approximative schematic
+**WARNING: the MIDI interface is not of our design, the schematic is an approximation.**
+Interface | MIDI input approximative schematic
 --- | ---
 | ![](doc/media/midi_interface.png) | ![](doc/media/midi_interface_schematic.png) |
