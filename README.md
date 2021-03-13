@@ -80,12 +80,34 @@ If you are interested about more use of the YM2149 (SSG) chip, like streaming, r
              +------+
 ```
 
+### MIDI Interface setup
+```
++------------------+    +---------------+
+|  +------------+  |    | +-----------+ |
+|  |   ARDUINO  |  |    | |   MIDI    | |
+|  | UNO / NANO |  |    | | INTERFACE | |
+|  +------------+  |    | +-----------+ |
+|                  |    |               |
+|               TX +----+ * * * * * * * + MIDI OUT
+|                  |    |               |
+|               RX +----+ * * * * * * * + MIDI IN
+|                  |    |       *       |
+|                  |    |       * * * * + MIDI THRU
+|                  |    |               |
++------------------+    +---------------+
+```
+
 ### YM2149F pinout
 ![](doc/media/pin_layout.png)
 
 
 # What does it look like ?
-### 0.2
+### 0.2 setup : Arduino + SSG = sound
 Mixer | YM2149F + oscillator on breadboard | Arduino
 --- | --- | ---
 | ![](doc/media/mixer_0_2.png) | ![](doc/media/YM2149F_0_2.png) | ![](doc/media/arduino_0_2.png) |
+
+### 0.3 setup : Arduino + MIDI interface = blink led
+Interface | Approximative schematic
+--- | ---
+| ![](doc/media/midi_interface.png) | ![](doc/media/midi_interface_schematic.png) |
