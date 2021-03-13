@@ -18,14 +18,34 @@
 #include "SSG.h"
 SSG ssg;
 
-void setup() {
-unsigned int i;
-  Serial.begin(115200);
+#include <MIDI.h>
+MIDI_CREATE_DEFAULT_INSTANCE();
+
+void setup()
+{
+  unsigned int i;
+  // Serial.begin(115200);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
+  
+  MIDI.begin(); // default listening to channel 1.
 }
 
-void loop() {
+void loop()
+{
+  if (MIDI.read())
+  {
+    switch(MIDI.getType())
+    {
+      case midi::NoteOn:
+      case midi::NoteOff:
+        delay_blink(100);
+        break;
+      default:
+        break;
+    }
+  }
+  /*
   unsigned int i;
   
   // 1 - Test Music
@@ -165,4 +185,5 @@ void loop() {
   
   ssg.set_envelope_frequency(2048);
   delay_blink(1000);
+  */
 }
