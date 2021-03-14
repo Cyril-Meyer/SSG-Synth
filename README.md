@@ -19,7 +19,7 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 * 0.2 :heavy_check_mark: [code] control SSG chip using an Arduino Uno
 * 0.3 :heavy_check_mark: [code] receive midi signals with Arduino
 * 0.4 :heavy_check_mark: [code] control SSG chip using midi signals
-* 0.5 :x: [hardware] from breadboard to custom shield
+* 0.5 :heavy_check_mark: [hardware] from breadboard to custom shield / PCB
 * 0.6 :x: [doc] examples and tutorial
 * 0.7 :x: It's working ! It's working !
 
@@ -30,7 +30,7 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 * A.4 :x: [code] envelope selection and frequency
 
 *B.x, fix issues*
-* B.1 :x: []
+* B.1 :x: bad frequency / bug with notes inferior to C2
 
 **1.0 :x: works with all major features and no known bugs**
 
@@ -124,6 +124,11 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 
 
 ### What does it look like ?
+
+### 0.5 setup : from breadboard to custom shield / PCB
+YM2149F + oscillator on PCB | Arduino + MIDI interface
+--- | ---
+| ![](doc/media/YM2149F_0_5.png) | ![](doc/media/arduino_0_5.png) |
 
 ### 0.3 setup : Arduino + MIDI interface = blink led
 **WARNING: the MIDI interface is not of our design, the schematic is an approximation.**
