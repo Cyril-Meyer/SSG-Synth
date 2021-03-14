@@ -31,6 +31,8 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 
 *B.x, fix issues*
 * B.1 :x: bad frequency / bug with notes inferior to C2
+* B.2 :x: cracking sound bug (append randomly)
+* B.3 :x: cracking sound after "note off" when note is already off
 
 **1.0 :x: works with all major features and no known bugs**
 
