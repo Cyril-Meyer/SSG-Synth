@@ -49,6 +49,11 @@ word SSG::note_to_YM(word note, word octave)
   return round(fMaster / (16*pgm_read_float(&note_frequency[note][octave])));
 }
 
+word SSG::midi_to_YM(byte note)
+{
+  return round(fMaster / (16*pgm_read_float(&midi_frequency[note])));
+}
+
 void SSG::set_mode_inactive()
 {
   digitalWrite(BC1, HIGH);
@@ -139,6 +144,27 @@ void SSG::set_chan_frequency(word note, word octave, char chan)
   }
 }
 
+void SSG::set_chan_frequency(byte note, char chan)
+{
+  word fT = midi_to_YM(note);
+  
+  if(chan & chanA)
+  {
+    write_data(0, (fT & 0xff));
+    write_data(1, (fT >> 8));
+  }
+  if(chan & chanB)
+  {
+    write_data(2, (fT & 0xff));
+    write_data(3, (fT >> 8));
+  }
+  if(chan & chanC)
+  {
+    write_data(4, (fT & 0xff));
+    write_data(5, (fT >> 8));
+  }
+}
+
 void SSG::set_chan_frequency_null(char chan)
 {
   if(chan & chanA)
@@ -171,6 +197,21 @@ void SSG::set_chanB_frequency(int note, int octave)
 void SSG::set_chanC_frequency(int note, int octave)
 {
   set_chan_frequency(note, octave, chanC);
+}
+
+void SSG::set_chanA_frequency(byte note)
+{
+  set_chan_frequency(note, chanA);
+}
+
+void SSG::set_chanB_frequency(byte note)
+{
+  set_chan_frequency(note, chanB);
+}
+
+void SSG::set_chanC_frequency(byte note)
+{
+  set_chan_frequency(note, chanC);
 }
 
 void SSG::set_chan_level(char level, char chan = 7)

@@ -21,30 +21,62 @@ SSG ssg;
 #include <MIDI.h>
 MIDI_CREATE_DEFAULT_INSTANCE();
 
+void handleNoteOn(byte channel, byte pitch, byte velocity)
+{
+  // Note on : unmute, set frequency, set volume (velocity)
+  switch(channel)
+  {
+    case 1:
+      ssg.set_chanA_frequency(pitch);
+      ssg.set_chanA_mixer(true, false);
+    break;
+    case 2:
+      ssg.set_chanB_frequency(pitch);
+      ssg.set_chanB_mixer(true, false);
+    break;
+    case 3:
+      ssg.set_chanC_frequency(pitch);
+      ssg.set_chanC_mixer(true, false);
+    break;
+    default:
+    break;
+  }
+}
+
+void handleNoteOff(byte channel, byte pitch, byte velocity)
+{
+  // Note off = mute
+  switch(channel)
+  {
+    case 1:
+      ssg.set_chanA_mixer(false, false);
+    break;
+    case 2:
+      ssg.set_chanB_mixer(false, false);
+    break;
+    case 3:
+      ssg.set_chanC_mixer(false, false);
+    break;
+    default:
+    break;
+  }
+}
+
 void setup()
 {
-  unsigned int i;
-  // Serial.begin(115200);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   
-  MIDI.begin(); // default listening to channel 1.
+  MIDI.setHandleNoteOn(handleNoteOn);
+  MIDI.setHandleNoteOff(handleNoteOff);
+  // MIDI.begin(); // default listening to channel 1
+  MIDI.begin(MIDI_CHANNEL_OMNI); // Listen to all incoming messages
 }
 
 void loop()
 {
-  if (MIDI.read())
-  {
-    switch(MIDI.getType())
-    {
-      case midi::NoteOn:
-      case midi::NoteOff:
-        delay_blink(100);
-        break;
-      default:
-        break;
-    }
-  }
+  MIDI.read();
+
   /*
   unsigned int i;
   

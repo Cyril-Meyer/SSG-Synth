@@ -37,10 +37,14 @@ class SSG
 
     // Music
     void set_chan_frequency(word note, word octave, char chan = 7);
+    void set_chan_frequency(byte note, char chan = 7);
     void set_chan_frequency_null(char chan = 7);
     void set_chanA_frequency(int note, int octave);
     void set_chanB_frequency(int note, int octave);
     void set_chanC_frequency(int note, int octave);
+    void set_chanA_frequency(byte note);
+    void set_chanB_frequency(byte note);
+    void set_chanC_frequency(byte note);
 
     // Level control
     // Using the level control, you disable the use of the envelope
@@ -72,6 +76,8 @@ class SSG
   private:
     // convert note and octave into a word
     word note_to_YM(word note, word octave);
+    // convert midi note number into a word
+    word midi_to_YM(byte note);
 
     // Modes
     /* We only use 3 possible state of BC1, BC2, BDIR combination.
