@@ -21,6 +21,12 @@ SSG ssg;
 #include <MIDI.h>
 MIDI_CREATE_DEFAULT_INSTANCE();
 
+// channel status
+// true when envelope is used instead of level control
+bool chanA_env = false;
+bool chanB_env = false;
+bool chanC_env = false;
+
 void handleNoteOn(byte channel, byte pitch, byte velocity)
 {
   // Note on : unmute, set frequency, set volume (velocity)
@@ -29,14 +35,21 @@ void handleNoteOn(byte channel, byte pitch, byte velocity)
     case 1:
       ssg.set_chanA_frequency(pitch);
       ssg.set_chanA_mixer(true, false);
+      if(!chanA_env)
+        // 0->127 -> 0->15
+        ssg.set_chanA_level(round(velocity/8));
     break;
     case 2:
       ssg.set_chanB_frequency(pitch);
       ssg.set_chanB_mixer(true, false);
+      if(!chanB_env)
+        ssg.set_chanB_level(round(velocity/8));
     break;
     case 3:
       ssg.set_chanC_frequency(pitch);
       ssg.set_chanC_mixer(true, false);
+      if(!chanC_env)
+        ssg.set_chanC_level(round(velocity/8));
     break;
     default:
     break;
@@ -64,18 +77,39 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
 
 void setup()
 {
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(A3, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   
   MIDI.setHandleNoteOn(handleNoteOn);
   MIDI.setHandleNoteOff(handleNoteOff);
-  // MIDI.begin(); // default listening to channel 1
   MIDI.begin(MIDI_CHANNEL_OMNI); // Listen to all incoming messages
 }
 
 void loop()
 {
   MIDI.read();
+
+  // envelope selection
+  /*
+  digitalRead(A0);
+  digitalRead(A1);
+  digitalRead(A2);
+  digitalRead(A3);
+  */
+  // envelope frequency
+  /*
+  analogRead(A4);
+  0->1023 -> 0->65535
+  f(x) = x/64
+  or
+  f(x) = (x*x)/16
+  or 
+  f(x) = 65535-(x*x)/16
+  */
 
   /*
   unsigned int i;
