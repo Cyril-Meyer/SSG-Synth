@@ -14,6 +14,7 @@
  * +--------+      +---------+      +---------+
  * 
  */
+#include "pins.h"
 
 #include "SSG.h"
 SSG ssg;
@@ -77,12 +78,21 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
 
 void setup()
 {
-  pinMode(A0, INPUT);
-  pinMode(A1, INPUT);
-  pinMode(A2, INPUT);
-  pinMode(A3, INPUT);
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
+  // hardware envelope input
+  pinMode(ENV_CONT, INPUT);
+  pinMode(ENV_ATT, INPUT);
+  pinMode(ENV_ALT, INPUT);
+  pinMode(ENV_HOLD, INPUT);
+  pinMode(ENV_FREQ, INPUT);
+  // hardware setup input (using parallel to serial shifting-in CD4021)
+  pinMode(INIT_SETUP_DATA, INPUT);
+  pinMode(INIT_SETUP_CLOCK, OUTPUT);
+  pinMode(INIT_SETUP_LATCH, OUTPUT);
+  digitalWrite(INIT_SETUP_CLOCK, LOW);
+  digitalWrite(INIT_SETUP_LATCH, LOW);
+  /*
+   * loop to get setup (operating mode, channel selection, ...)
+   */
   
   MIDI.setHandleNoteOn(handleNoteOn);
   MIDI.setHandleNoteOff(handleNoteOff);
@@ -95,21 +105,23 @@ void loop()
 
   // envelope selection
   /*
-  digitalRead(A0);
-  digitalRead(A1);
-  digitalRead(A2);
-  digitalRead(A3);
+  digitalRead(ENV_CONT);
+  digitalRead(ENV_ATT);
+  digitalRead(ENV_ALT);
+  digitalRead(ENV_HOLD);
   */
   // envelope frequency
+  /* 0->1023 -> 0->65535
+   * f(x) = x/64
+   * or
+   * f(x) = (x*x)/16
+   * or
+   * f(x) = 65535-(x*x)/16
+   */
   /*
-  analogRead(A4);
-  0->1023 -> 0->65535
-  f(x) = x/64
-  or
-  f(x) = (x*x)/16
-  or 
-  f(x) = 65535-(x*x)/16
+  analogRead(ENV_FREQ);
   */
+  
 
   /*
   unsigned int i;

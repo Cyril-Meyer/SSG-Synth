@@ -2,22 +2,10 @@
 #define SSG_H
 
 #include "Arduino.h"
+#include "pins.h"
 
 // Include notes frequencies
 #include "music.h"
-
-// Define IO pinout
-#define DA0 5
-#define DA1 6
-#define DA2 7
-#define DA3 8
-#define DA4 9
-#define DA5 10
-#define DA6 11
-#define DA7 12
-#define BC1 4
-#define BC2 3
-#define BDIR 2
 
 // Delay in microseconds we allow the chip to react after mode changes or register access
 #define us_delay 100
