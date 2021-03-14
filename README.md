@@ -20,8 +20,8 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 * 0.3 :heavy_check_mark: [code] receive midi signals with Arduino
 * 0.4 :heavy_check_mark: [code] control SSG chip using midi signals
 * 0.5 :heavy_check_mark: [hardware] from breadboard to custom shield / PCB
-* 0.6 :x: [doc] examples and tutorial
-* 0.7 :x: It's working ! It's working !
+* 0.6 :heavy_check_mark: [doc] examples and tutorial
+* 0.7 :heavy_check_mark: It's working ! It's working !
 
 *A.x, add features to make it cool :smile:*
 * A.1 :x: [code] support velocity
@@ -31,17 +31,27 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 
 *B.x, fix issues*
 * B.1 :x: bad frequency / bug with notes inferior to C2
+* B.2 :x: cracking sound bug (append randomly)
+* B.3 :x: cracking sound after "note off" when note is already off
 
 **1.0 :x: works with all major features and no known bugs**
 
-*1.x, non-essential improvement*
-* 1.1 :x: hardware operating mode selection
-* 1.2 :x: hardware channel selection
+*1.0x, non-essential improvement*
+* 1.01 :x: hardware operating mode selection
+* 1.02 :x: hardware channel selection
+* 1.03 :x: Eurorack dimension module
 
 
 ## Documentation
-### Tutorial: Create your own
-*TODO* :smile:
+### Create your own
+*Basic synth setup (+/- 15€)*
+Components :
+* Arduino Uno/Nano
+* MIDI Shield
+* YM2149F
+* 4MHz Active Crystal Oscillator
+* 2 Prototype PCB
+* resistor (1x100Ω + 3x1kΩ)
 
 **Troubleshooting**
 * Avoid using a breadboard for the YM2149F, this often tends to create connection problems, prefer the soldering on a custom PCB.
