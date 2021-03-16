@@ -8,7 +8,7 @@
 #include "music.h"
 
 // Delay in microseconds we allow the chip to react after mode changes or register access
-#define us_delay 100
+#define us_delay 1
 
 // We use a 4Mhz crystal oscillator and set /SEL to low, the input clock is divided by 2 and equal 2Mhz
 #define fMaster 2000000

@@ -35,20 +35,20 @@ void handleNoteOn(byte channel, byte pitch, byte velocity)
   {
     case 1:
       ssg.set_chanA_frequency(pitch);
-      ssg.set_chanA_mixer(true, false);
+      //ssg.set_chanA_mixer(true, false);
       if(!chanA_env)
         // 0->127 -> 0->15
         ssg.set_chanA_level(round(velocity/8));
     break;
     case 2:
       ssg.set_chanB_frequency(pitch);
-      ssg.set_chanB_mixer(true, false);
+      //ssg.set_chanB_mixer(true, false);
       if(!chanB_env)
         ssg.set_chanB_level(round(velocity/8));
     break;
     case 3:
       ssg.set_chanC_frequency(pitch);
-      ssg.set_chanC_mixer(true, false);
+      //ssg.set_chanC_mixer(true, false);
       if(!chanC_env)
         ssg.set_chanC_level(round(velocity/8));
     break;
@@ -63,13 +63,16 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
   switch(channel)
   {
     case 1:
-      ssg.set_chanA_mixer(false, false);
+      //ssg.set_chanA_mixer(false, false);
+      ssg.set_chanA_level(0);
     break;
     case 2:
-      ssg.set_chanB_mixer(false, false);
+      //ssg.set_chanB_mixer(false, false);
+      ssg.set_chanB_level(0);
     break;
     case 3:
-      ssg.set_chanC_mixer(false, false);
+      //ssg.set_chanC_mixer(false, false);
+      ssg.set_chanC_level(0);
     break;
     default:
     break;

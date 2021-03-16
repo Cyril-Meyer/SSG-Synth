@@ -81,7 +81,6 @@ void SSG::set_address(char address)
   delayMicroseconds(us_delay);
 
   // write address
-  delayMicroseconds(us_delay); 
   digitalWrite(DA0, (address & 0b00000001));
   digitalWrite(DA1, (address & 0b00000010));
   digitalWrite(DA2, (address & 0b00000100));
@@ -93,7 +92,7 @@ void SSG::set_address(char address)
   delayMicroseconds(us_delay);
 
   set_mode_inactive();
-  delayMicroseconds(100);
+  delayMicroseconds(us_delay);
 }
 
 void SSG::set_data(char data)
@@ -102,7 +101,6 @@ void SSG::set_data(char data)
   delayMicroseconds(us_delay);
   
   // write data
-  delayMicroseconds(100); 
   digitalWrite(DA0, (data & 0b00000001));
   digitalWrite(DA1, (data & 0b00000010));
   digitalWrite(DA2, (data & 0b00000100));
@@ -119,7 +117,9 @@ void SSG::set_data(char data)
 
 void SSG::write_data(char address, char data)
 {
+  // at least 3 microseconds
   set_address(address);
+  // at least 3 microseconds
   set_data(data);
 }
 /*
