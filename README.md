@@ -24,15 +24,18 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 * 0.7 :heavy_check_mark: It's working ! It's working !
 
 *A.x, add features to make it cool :smile:*
-* A.1 :x: [code] support velocity
+* A.1 :heavy_check_mark: [code] support velocity
 * A.2 :x: [code] add second operating mode : polyphonic 3 voice
 * A.3 :x: [hardware] add hardware control support for envelope selection and frequency
 * A.4 :x: [code] envelope selection and frequency
+* A.5 :x: [code] reduce delay (reduce until it no longer works)
 
 *B.x, fix issues*
 * B.1 :x: bad frequency / bug with notes inferior to C2
 * B.2 :x: cracking sound bug (append randomly)
-* B.3 :x: cracking sound after "note off" when note is already off
+  * may possibly come from the midi interface, DAW software or Arduino midi library, to investigate
+* B.3 :heavy_check_mark: cracking sound after "note off" when note is already off
+  * set_chan_mixer make this noise, avoided when possible using set_chan_level_null
 
 **1.0 :x: works with all major features and no known bugs**
 
