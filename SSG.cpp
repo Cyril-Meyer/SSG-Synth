@@ -51,7 +51,7 @@ word SSG::note_to_YM(word note, word octave)
 */
 word SSG::midi_to_YM(byte note)
 {
-  return round(fMaster / (16*pgm_read_float(&midi_frequency[note])));
+  return round(fMaster / (16*pgm_read_float(&midi_frequency[max(0, note - 24)])));
 }
 
 void SSG::set_mode_inactive()

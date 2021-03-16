@@ -33,7 +33,8 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 * A.5 :x: [code] reduce delay (reduce until it no longer works)
 
 *B.x, fix issues*
-* B.1 :x: bad frequency / bug with notes inferior to C2
+* B.1 :heavy_check_mark: bad frequency / bug with notes inferior to C2
+  * overflow of frequency value when notes too low, fix lower notes to C2
 * B.2 :x: cracking sound bug (append randomly)
   * may possibly come from the midi interface, DAW software or Arduino midi library, to investigate
 * B.3 :heavy_check_mark: cracking sound after "note off" when note is already off
