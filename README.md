@@ -27,6 +27,8 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 * A.1 :heavy_check_mark: [code] support velocity
 * A.2 :heavy_check_mark: [code] add second operating mode : polyphonic 3 voice
 * A.3 :x: [hardware] add hardware control support for envelope selection and frequency
+  * SN74HC165N based serial-in shift register
+  * 2 control pin + 2 data pin = 16 digital input
 * A.4 :x: [code] envelope selection and frequency
 * A.5 :x: [code] reduce delay (reduce until it no longer works)
 
