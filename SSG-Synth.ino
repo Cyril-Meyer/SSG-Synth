@@ -28,9 +28,15 @@ bool chanA_env = false;
 bool chanB_env = false;
 bool chanC_env = false;
 
+#define POLYPHONIC
+
+
+#ifndef POLYPHONIC
+// monophonic, new note replace old note
+
 void handleNoteOn(byte channel, byte pitch, byte velocity)
 {
-  // Note on : unmute, set frequency, set volume (velocity)
+  // Note on : set frequency, set volume (velocity)
   switch(channel)
   {
     case 1:
@@ -59,7 +65,7 @@ void handleNoteOn(byte channel, byte pitch, byte velocity)
 
 void handleNoteOff(byte channel, byte pitch, byte velocity)
 {
-  // Note off = mute
+  // Note off = set volume 0
   switch(channel)
   {
     case 1:
@@ -78,6 +84,75 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
     break;
   }
 }
+
+#else
+
+// polyphonic, up to 3 simultaneous notes, new note drop if already 3 being played
+
+byte Afree = 0;
+byte Bfree = 0;
+byte Cfree = 0;
+
+void handleNoteOn(byte channel, byte pitch, byte velocity)
+{
+  // Note on : set frequency, set volume (velocity)
+  switch(channel)
+  {
+    case 1:
+      if(Afree == 0)
+      {
+        Afree = pitch;
+        ssg.set_chanA_frequency(pitch);
+        if(!chanA_env)
+          ssg.set_chanA_level(round(velocity/8));
+      }
+      else if(Bfree ==0)
+      {
+        Bfree = pitch;
+        ssg.set_chanB_frequency(pitch);
+        if(!chanB_env)
+          ssg.set_chanB_level(round(velocity/8));
+      }
+      else if(Cfree ==0)
+      {
+        Cfree = pitch;
+        ssg.set_chanC_frequency(pitch);
+        if(!chanC_env)
+          ssg.set_chanC_level(round(velocity/8));
+      }
+    break;
+    default:
+    break;
+  }
+}
+
+void handleNoteOff(byte channel, byte pitch, byte velocity)
+{
+  // Note off = set volume 0
+  switch(channel)
+  {
+    case 1:
+      if(pitch == Afree)
+      {
+        ssg.set_chanA_level(0);
+        Afree = 0;
+      }
+      if(pitch == Bfree)
+      {
+        ssg.set_chanB_level(0);
+        Bfree = 0;
+      }
+      if(pitch == Cfree)
+      {
+        ssg.set_chanC_level(0);
+        Cfree = 0;
+      }
+    break;
+    default:
+    break;
+  }
+}
+#endif
 
 void setup()
 {
