@@ -25,7 +25,7 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 
 *A.x, add features to make it cool :smile:*
 * A.1 :heavy_check_mark: [code] support velocity
-* A.2 :x: [code] add second operating mode : polyphonic 3 voice
+* A.2 :heavy_check_mark: [code] add second operating mode : polyphonic 3 voice
 * A.3 :x: [hardware] add hardware control support for envelope selection and frequency
 * A.4 :x: [code] envelope selection and frequency
 * A.5 :x: [code] reduce delay (reduce until it no longer works)
