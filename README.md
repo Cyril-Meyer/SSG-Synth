@@ -46,6 +46,7 @@ This project use the [Arduino MIDI Library](https://github.com/FortySevenEffects
 * 1.01 :x: hardware operating mode selection
 * 1.02 :x: hardware channel selection
 * 1.03 :x: Eurorack dimension module
+* 1.04 :x: Use Arduino as a clock (https://arduino.stackexchange.com/questions/16698/arduino-constant-clock-output)
 
 
 ## Documentation
